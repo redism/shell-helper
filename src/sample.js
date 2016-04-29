@@ -3,7 +3,7 @@ import * as lib from './index'
 require('colors')
 
 async function test () {
-  let answer;
+  let answer
   answer = await lib.getAnswer('enter anything : ')
   console.log(`You answered : ${answer}`)
 
