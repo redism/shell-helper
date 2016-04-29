@@ -3,7 +3,8 @@ import * as lib from './index'
 require('colors')
 
 async function test () {
-  let answer = await lib.getAnswer('enter anything : ')
+  let answer;
+  answer = await lib.getAnswer('enter anything : ')
   console.log(`You answered : ${answer}`)
 
   const accepts = [ 'y', 's', 'n' ]
@@ -16,6 +17,9 @@ async function test () {
 
   answer = await lib.askYesNo(`Are you sure`, false)
   console.log(`You answered : ${answer}`)
+
+  answer = await lib.pickList(`Pick your number`, [ '1', '3', '5' ])
+  console.log(`Your number : ${answer}`)
 }
 
 test().catch(::console.error)

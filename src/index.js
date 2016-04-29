@@ -23,4 +23,13 @@ export async function askYesNo (question = '', defaultNo = true) {
   return (ret.trim().toLowerCase() || (defaultNo ? 'n' : 'y')) === 'y'
 }
 
-export default { getAnswer, askYesNo }
+export async function pickList (msg, list) {
+  const accepts = []
+  console.log(list.map((s, index) => {
+    accepts.push((index + 1).toString())
+    return `[${(index + 1).toString().green}] ${s}`
+  }).join('\n'))
+  return getAnswer(msg, { accepts })
+}
+
+export default { getAnswer, askYesNo, pickList }
