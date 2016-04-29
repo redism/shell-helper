@@ -22,6 +22,6 @@ s.getAnswer('What is your favorite color', {accepts: ['red', 'blue']})
 
 ```js
 const s = require('shell-helper')
-lib.askYesNo(`Are you sure`, true).then(answer => console.log(`You answered : ${answer}`))
+s.askYesNo(`Are you sure`, true).then(answer => console.log(`You answered : ${answer}`))
 ```
 
