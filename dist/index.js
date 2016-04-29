@@ -29,7 +29,8 @@
       accepts.push((index + 1).toString());
       return `[${ (index + 1).toString().green }] ${ s }`;}).
     join('\n'));
-    return getAnswer(msg, { accepts: accepts });});return function pickList(_x9, _x10) {return ref.apply(this, arguments);};})();require('source-map-support/register');function _asyncToGenerator(fn) {return function () {var gen = fn.apply(this, arguments);return new Promise(function (resolve, reject) {function step(key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {return Promise.resolve(value).then(function (value) {return step("next", value);}, function (err) {return step("throw", err);});}}return step("next");});};}const readline = require('readline');const Promise = require('bluebird');exports.default = 
+    const index = yield getAnswer(msg, { accepts: accepts });
+    return parseInt(index, 10) - 1;});return function pickList(_x9, _x10) {return ref.apply(this, arguments);};})();require('source-map-support/register');function _asyncToGenerator(fn) {return function () {var gen = fn.apply(this, arguments);return new Promise(function (resolve, reject) {function step(key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {return Promise.resolve(value).then(function (value) {return step("next", value);}, function (err) {return step("throw", err);});}}return step("next");});};}const readline = require('readline');const Promise = require('bluebird');exports.default = 
 
 
 { getAnswer: getAnswer, askYesNo: askYesNo, pickList: pickList };

@@ -29,7 +29,8 @@ export async function pickList (msg, list) {
     accepts.push((index + 1).toString())
     return `[${(index + 1).toString().green}] ${s}`
   }).join('\n'))
-  return getAnswer(msg, { accepts })
+  const index = await getAnswer(msg, { accepts })
+  return parseInt(index, 10) - 1
 }
 
 export default { getAnswer, askYesNo, pickList }

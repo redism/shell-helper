@@ -19,7 +19,7 @@ async function test () {
   console.log(`You answered : ${answer}`)
 
   answer = await lib.pickList(`Pick your number`, [ '1', '3', '5' ])
-  console.log(`Your number : ${answer}`)
+  console.log(`Your chosen index : ${answer}`)
 }
 
 test().catch(::console.error)
