@@ -1,8 +1,27 @@
-# mpinit
+# shell-helper
 
-Boilerplate setup for a project.
+Random helper functions for command based operations
+See `sample.js` for usage.
 
-## Some issues.
+* getAnswer
 
-* Used [babel-eslint](https://github.com/babel/babel-eslint) as a parser engine to use async/await.
-* Applied [Standard](https://github.com/feross/standard), but added comma-dangle always-multiline rule.
+```js
+const s = require('shell-helper')
+s.getAnswer('What is your name').then(name => console.log(`Your name is ${name}.`))
+```
+
+* getAnswer with accepts option
+
+```js
+const s = require('shell-helper')
+s.getAnswer('What is your favorite color', {accepts: ['red', 'blue']})
+  .then(color => console.log(`Your favorite color is ${color}.`))
+```
+
+* askYesNo
+
+```js
+const s = require('shell-helper')
+lib.askYesNo(`Are you sure`, true).then(answer => console.log(`You answered : ${answer}`))
+```
+
