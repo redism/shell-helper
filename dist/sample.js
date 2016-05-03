@@ -5,22 +5,22 @@
 
   function* () {
     let answer;
-    // answer = await lib.getAnswer('enter anything : ')
-    // console.log(`You answered : ${answer}`)
-    //
-    // const accepts = [ 'y', 's', 'n' ]
-    // answer = await lib.getAnswer(`enter one of [${accepts.join(',')}] : `, { accepts })
-    // assert(accepts.indexOf(answer) >= 0)
-    // console.log(`You answered : ${answer}`)
-    //
-    // answer = await lib.askYesNo(`Are you sure`, true)
-    // console.log(`You answered : ${answer}`)
-    //
-    // answer = await lib.askYesNo(`Are you sure`, false)
-    // console.log(`You answered : ${answer}`)
-    //
-    // answer = await lib.pickList(`Pick your number`, [ '1', '3', '5' ])
-    // console.log(`Your chosen index : ${answer}`)
+    answer = yield lib.getAnswer('enter anything : ');
+    console.log(`You answered : ${ answer }`);
+
+    const accepts = ['y', 's', 'n'];
+    answer = yield lib.getAnswer(`enter one of [${ accepts.join(',') }] : `, { accepts: accepts });
+    (0, _assert2.default)(accepts.indexOf(answer) >= 0);
+    console.log(`You answered : ${ answer }`);
+
+    answer = yield lib.askYesNo(`Are you sure`, true);
+    console.log(`You answered : ${ answer }`);
+
+    answer = yield lib.askYesNo(`Are you sure`, false);
+    console.log(`You answered : ${ answer }`);
+
+    answer = yield lib.pickList(`Pick your number`, ['1', '3', '5']);
+    console.log(`Your chosen index : ${ answer }`);
 
     answer = yield lib.showProgress(`Operation in progress`, _bluebird2.default.resolve(100).delay(1000));
     console.log(`Returned value : ${ answer }`);

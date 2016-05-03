@@ -47,7 +47,11 @@
 
     let r;
     try {
-      r = yield (0, _lodash.isFunction)(fnOrPromise) ? fnOrPromise() : fnOrPromise;
+      if ((0, _lodash.isFunction)(fnOrPromise)) {
+        r = fnOrPromise();} else 
+      {
+        r = yield fnOrPromise;}
+
       end(options.ok);} 
     catch (ex) {
       end(options.fail);
@@ -56,5 +60,5 @@
     return r;});return function showProgress(_x11, _x12, _x13) {return ref.apply(this, arguments);};})();require('source-map-support/register');var _lodash = require('lodash');function _asyncToGenerator(fn) {return function () {var gen = fn.apply(this, arguments);return new Promise(function (resolve, reject) {function step(key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {return Promise.resolve(value).then(function (value) {return step("next", value);}, function (err) {return step("throw", err);});}}return step("next");});};}const readline = require('readline');const Promise = require('bluebird');exports.default = 
 
 
-{ getAnswer: getAnswer, askYesNo: askYesNo, pickList: pickList };
+{ getAnswer: getAnswer, askYesNo: askYesNo, pickList: pickList, showProgress: showProgress };
 //# sourceMappingURL=index.js.map

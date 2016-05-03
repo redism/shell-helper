@@ -47,7 +47,11 @@ export async function showProgress(msg, fnOrPromise, options = {
 
   let r;
   try {
-    r = await (isFunction(fnOrPromise) ? fnOrPromise() : fnOrPromise);
+    if (isFunction(fnOrPromise)) {
+      r = fnOrPromise();
+    } else {
+      r = await fnOrPromise;
+    }
     end(options.ok)
   } catch (ex) {
     end(options.fail)
@@ -56,4 +60,4 @@ export async function showProgress(msg, fnOrPromise, options = {
   return r
 }
 
-export default { getAnswer, askYesNo, pickList }
+export default {getAnswer, askYesNo, pickList, showProgress}
