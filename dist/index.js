@@ -47,7 +47,7 @@
 
     let r;
     try {
-      r = yield fnOrPromise;
+      r = yield (0, _lodash.isFunction)(fnOrPromise) ? fnOrPromise() : fnOrPromise;
       end(options.ok);} 
     catch (ex) {
       end(options.fail);

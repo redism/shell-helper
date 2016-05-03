@@ -47,7 +47,7 @@ export async function showProgress(msg, fnOrPromise, options = {
 
   let r;
   try {
-    r = await fnOrPromise;
+    r = await (isFunction(fnOrPromise) ? fnOrPromise() : fnOrPromise);
     end(options.ok)
   } catch (ex) {
     end(options.fail)
