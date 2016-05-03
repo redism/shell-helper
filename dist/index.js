@@ -1,4 +1,5 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.pickList = exports.askYesNo = exports.getAnswer = undefined;let getAnswer = exports.getAnswer = (() => {var ref = _asyncToGenerator(
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.showProgress = exports.pickList = exports.askYesNo = exports.getAnswer = undefined;let getAnswer = exports.getAnswer = (() => {var ref = _asyncToGenerator(
+
 
 
 
@@ -30,7 +31,29 @@
       return `[${ (index + 1).toString().green }] ${ s }`;}).
     join('\n'));
     const index = yield getAnswer(msg, { accepts: accepts });
-    return parseInt(index, 10) - 1;});return function pickList(_x9, _x10) {return ref.apply(this, arguments);};})();require('source-map-support/register');function _asyncToGenerator(fn) {return function () {var gen = fn.apply(this, arguments);return new Promise(function (resolve, reject) {function step(key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {return Promise.resolve(value).then(function (value) {return step("next", value);}, function (err) {return step("throw", err);});}}return step("next");});};}const readline = require('readline');const Promise = require('bluebird');exports.default = 
+    return parseInt(index, 10) - 1;});return function pickList(_x9, _x10) {return ref.apply(this, arguments);};})();let showProgress = exports.showProgress = (() => {var ref = _asyncToGenerator(
+
+
+  function* (msg, fnOrPromise) 
+
+
+
+  {let options = arguments.length <= 2 || arguments[2] === undefined ? { running: `running `.yellow, fail: `fail `.red, ok: `ok `.green } : arguments[2];
+    process.stdout.write(`${ msg } : `.white + options.running);
+    const end = function end(res) {
+      readline.clearLine(process.stdout);
+      process.stdout.write(`\r${ msg.white } : ` + res + '\n');};
+
+
+    let r;
+    try {
+      r = yield fnOrPromise;
+      end(options.ok);} 
+    catch (ex) {
+      end(options.fail);
+      throw ex;}
+
+    return r;});return function showProgress(_x11, _x12, _x13) {return ref.apply(this, arguments);};})();require('source-map-support/register');var _lodash = require('lodash');function _asyncToGenerator(fn) {return function () {var gen = fn.apply(this, arguments);return new Promise(function (resolve, reject) {function step(key, arg) {try {var info = gen[key](arg);var value = info.value;} catch (error) {reject(error);return;}if (info.done) {resolve(value);} else {return Promise.resolve(value).then(function (value) {return step("next", value);}, function (err) {return step("throw", err);});}}return step("next");});};}const readline = require('readline');const Promise = require('bluebird');exports.default = 
 
 
 { getAnswer: getAnswer, askYesNo: askYesNo, pickList: pickList };

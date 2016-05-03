@@ -1,5 +1,6 @@
 import assert from 'assert'
 import * as lib from './index'
+import Promise from 'bluebird'
 require('colors')
 
 async function test () {
@@ -20,6 +21,9 @@ async function test () {
 
   answer = await lib.pickList(`Pick your number`, [ '1', '3', '5' ])
   console.log(`Your chosen index : ${answer}`)
+
+  answer = await lib.showProgress(`Operation in progress`, Promise.resolve(100).delay(1000))
+  console.log(`Returned value : ${answer}`)
 }
 
 test().catch(::console.error)
