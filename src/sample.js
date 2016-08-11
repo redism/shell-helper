@@ -1,7 +1,9 @@
 import assert from 'assert'
 import * as lib from './index'
-import Promise from 'bluebird'
-require('colors')
+
+async function waitAndReturn (ret, delay) {
+  return new Promise(resolve => setTimeout(() => resolve(ret), delay));
+}
 
 async function test () {
   let answer
@@ -22,7 +24,7 @@ async function test () {
   answer = await lib.pickList(`Pick your number`, ['1', '3', '5'])
   console.log(`Your chosen index : ${answer}`)
 
-  answer = await lib.showProgress(`Operation in progress`, Promise.resolve(100).delay(1000))
+  answer = await lib.showProgress(`Operation in progress`, waitAndReturn(100, 1000))
   console.log(`Returned value : ${answer}`)
 
   answer = await lib.showProgress(`Operation in progress`, () => 1000)
