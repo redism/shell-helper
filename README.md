@@ -25,3 +25,16 @@ const s = require('shell-helper')
 s.askYesNo(`Are you sure`, true).then(answer => console.log(`You answered : ${answer}`))
 ```
 
+* pickList
+
+```js
+const s = require('shell-helper')
+s.pickList(`Pick your number`, ['1', '3', '5']).then(answer => console.log(`Your chosen index : ${answer}`));
+```
+
+* showProgress
+
+```js
+const s = require('shell-helper')
+s.showProgress(`Operation in progress`, someKindOfPromise).then(ret => console.log(`Returned value : ${ret}`));
+```
